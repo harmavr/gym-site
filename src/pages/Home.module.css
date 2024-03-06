@@ -1,0 +1,19 @@
+.add {
+  margin-top: 4rem;
+  background-color: rgb(54, 72, 72);
+  border-radius: 4rem;
+  width: fit-content;
+  padding: 20px 10px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 2rem;
+  text-overflow: inherit;
+  padding: 20px 10px;
+  margin: 20px;
+  background-color: rgb(79, 67, 50);
+  border-radius: 4rem;
+}
