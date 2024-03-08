@@ -14,6 +14,8 @@ export default function Programm({ value }) {
       <h3>
         <img style={{ width: "500px" }} src={coachImg} alt="" />
       </h3>
+      <button>Close</button>
+      <button>Book</button>
     </Modal>
   );
 }
