@@ -1,3 +1,7 @@
 export const showProgramm = () => ({
-  type: "programm",
+  type: "show",
+});
+
+export const closeProgramm = () => ({
+  type: "close",
 });
