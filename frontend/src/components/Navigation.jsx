@@ -25,6 +25,8 @@ export default function Navigation() {
             <li>
               <Link to="/contact">Contact</Link>
             </li>
+            <li>Login</li>
+            <li>Register</li>
           </ul>
         </nav>
       </header>
