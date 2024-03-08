@@ -14,6 +14,12 @@ const reducer = (state = initialState, action) => {
       ...state,
       isModalOpen: true,
     };
+  }
+  if (action.type === "close") {
+    return {
+      ...state,
+      isModalOpen: false,
+    };
   } else return state;
 };
 
