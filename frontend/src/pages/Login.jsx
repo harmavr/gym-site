@@ -1,9 +1,19 @@
-import { Form, json, redirect } from "react-router-dom";
+import { Form, json, redirect, useActionData } from "react-router-dom";
 
 export default function Login() {
+  const data = useActionData();
+
   return (
     <Form method="post">
       <h2>Login</h2>
+      {data && data.errors && (
+        <ul>
+          {Object.values(data.errors).map((err) => (
+            <li key={err}>{err}</li>
+          ))}
+        </ul>
+      )}
+      {data && data.message && <p>{data.message}</p>}
       <div className="container">
         <div className="email">
           <label htmlFor="email">Email</label>

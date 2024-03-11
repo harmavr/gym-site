@@ -1,9 +1,27 @@
-import { Form, json, redirect } from "react-router-dom";
+import {
+  Form,
+  json,
+  redirect,
+  useActionData,
+  useNavigation,
+} from "react-router-dom";
 
 export default function Register() {
+  const data = useActionData();
+  const navigation = useNavigation();
+  const isSumbitting = navigation.state === "submitting";
+
   return (
     <Form method="post">
       <h2>Register</h2>
+      {data && data.errors && (
+        <ul>
+          {Object.values(data.errors).map((err) => (
+            <li key={err}>{err}</li>
+          ))}
+        </ul>
+      )}
+      {data && data.message && <p>{data.message}</p>}
       <div className="container">
         <div className="email">
           <label htmlFor="email">Email</label>
@@ -15,7 +33,9 @@ export default function Register() {
         </div>
       </div>
       <div className="form-actions">
-        <button>Register</button>
+        <button disabled={isSumbitting}>
+          {isSumbitting ? "Submitting" : "Register"}
+        </button>
       </div>
     </Form>
   );
