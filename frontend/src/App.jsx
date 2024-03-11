@@ -6,6 +6,10 @@ import Home from "./pages/Home";
 import Root from "./pages/Root";
 import Pricing from "./pages/Pricing";
 import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import { action as loginAction } from "./pages/Login";
+import { action as registerAction } from "./pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +21,8 @@ const router = createBrowserRouter([
       { path: "/schedule", element: <Schedule /> },
       { path: "/pricing", element: <Pricing /> },
       { path: "/contact", element: <Contact /> },
+      { path: "/login", element: <Login />, action: loginAction },
+      { path: "/register", element: <Register />, action: registerAction },
     ],
   },
 ]);
