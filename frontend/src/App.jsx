@@ -11,11 +11,14 @@ import Register from "./pages/Register";
 import { action as loginAction } from "./pages/Login";
 import { action as registerAction } from "./pages/Register";
 import { action as logoutAction } from "./pages/Logout";
+import { tokenLoader } from "./util/auth";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    id: "root",
+    loader: tokenLoader,
     children: [
       { path: "/", element: <Home /> },
       { path: "/home", element: <Home /> },

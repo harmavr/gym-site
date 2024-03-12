@@ -1,8 +1,9 @@
-import { Form, Link } from "react-router-dom";
+import { Form, Link, useRouteLoaderData } from "react-router-dom";
 import classes from "./Navigation.module.css";
 import logo from "../assets/logo.jpg";
 
 export default function Navigation() {
+  const token = useRouteLoaderData("root");
   return (
     <div className="index-page">
       <header className={classes.header}>
@@ -25,17 +26,23 @@ export default function Navigation() {
             <li>
               <Link to="/contact">Contact</Link>
             </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
-            <li>
-              <Form action="/logout" method="post">
-                <button>Logout</button>
-              </Form>
-            </li>
+            {!token && (
+              <>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+                <li>
+                  <Link to="/register">Register</Link>
+                </li>
+              </>
+            )}
+            {token && (
+              <li>
+                <Form action="/logout" method="post">
+                  <button>Logout</button>
+                </Form>
+              </li>
+            )}
           </ul>
         </nav>
       </header>
