@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 import classes from "./Navigation.module.css";
 import logo from "../assets/logo.jpg";
 
@@ -30,6 +30,11 @@ export default function Navigation() {
             </li>
             <li>
               <Link to="/register">Register</Link>
+            </li>
+            <li>
+              <Form action="/logout" method="post">
+                <button>Logout</button>
+              </Form>
             </li>
           </ul>
         </nav>
