@@ -1,7 +1,15 @@
-import { Form, json, redirect, useActionData } from "react-router-dom";
+import {
+  Form,
+  json,
+  redirect,
+  useActionData,
+  useNavigation,
+} from "react-router-dom";
 
 export default function Login() {
   const data = useActionData();
+  const navigation = useNavigation();
+  const isSumbitting = navigation.state === "logging";
 
   return (
     <Form method="post">
@@ -25,7 +33,9 @@ export default function Login() {
         </div>
       </div>
       <div className="form-actions">
-        <button>Login</button>
+        <button disabled={isSumbitting}>
+          {isSumbitting ? "Submitting" : "Login"}
+        </button>
       </div>
     </Form>
   );
@@ -55,6 +65,11 @@ export async function action({ request, params }) {
   if (!response.ok) {
     throw json({ message: "Could not save event" }, { status: 500 });
   }
+
+  const resData = await response.json();
+  const token = resData.token;
+
+  localStorage.setItem("token", token);
 
   return redirect("/");
 }
