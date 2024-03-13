@@ -1,17 +1,25 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Modal from "./Modal";
 import { closeProgramm } from "../redux/actions";
+import { useRouteLoaderData } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Programm({ value }) {
   const coach = useSelector((state) => state.coach);
   const coachImg = useSelector((state) => state.img);
   const programm = useSelector((state) => state.programm);
   const close = useSelector((state) => state.isModalOpen);
-
-  const dispatch = useDispatch();
+  const token = useRouteLoaderData("root");
+  const navigateTo = useNavigate();
 
   function handleCloseModal() {
     dispatch(closeProgramm());
+  }
+
+  async function handleBook() {
+    if (!token) {
+      navigateTo("/login");
+    }
   }
 
   return (
@@ -25,7 +33,7 @@ export default function Programm({ value }) {
         <img style={{ width: "500px" }} src={coachImg} alt="" />
       </h3>
       <button onClick={handleCloseModal}>Close</button>
-      <button>Book</button>
+      <button onClick={handleBook}>Book</button>
     </Modal>
   );
 }
