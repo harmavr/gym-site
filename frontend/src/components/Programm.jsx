@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Modal from "./Modal";
 import { closeProgramm } from "../redux/actions";
 import { useRouteLoaderData } from "react-router-dom";
@@ -11,6 +11,7 @@ export default function Programm({ value }) {
   const close = useSelector((state) => state.isModalOpen);
   const token = useRouteLoaderData("root");
   const navigateTo = useNavigate();
+  const dispatch = useDispatch();
 
   function handleCloseModal() {
     dispatch(closeProgramm());
