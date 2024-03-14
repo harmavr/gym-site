@@ -56,7 +56,6 @@ export async function action({ request, params }) {
     },
     body: JSON.stringify(loginData),
   });
-  console.log(response);
 
   if (response.status === 401) {
     return response;
@@ -67,9 +66,11 @@ export async function action({ request, params }) {
   }
 
   const resData = await response.json();
-  const token = resData.token;
+  const { token, firstName, lastName } = resData;
 
   localStorage.setItem("token", token);
+  localStorage.setItem("firstName", firstName);
+  localStorage.setItem("lastName", lastName);
 
   return redirect("/");
 }

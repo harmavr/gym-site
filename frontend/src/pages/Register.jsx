@@ -23,13 +23,29 @@ export default function Register() {
       )}
       {data && data.message && <p>{data.message}</p>}
       <div className="container">
+        <div className="firstName">
+          <label htmlFor="firstName">First Name</label>
+          <input type="text" name="firstName" required />
+        </div>
+        <div className="lastName">
+          <label htmlFor="lastName">Last Name</label>
+          <input type="text" name="lastName" required />
+        </div>
         <div className="email">
           <label htmlFor="email">Email</label>
-          <input type="email" name="email" />
+          <input type="email" name="email" required />
+        </div>
+        <div className="mobilePhone">
+          <label htmlFor="mobilePhone">Mobile Phone</label>
+          <input type="number" name="mobilePhone" required />
         </div>
         <div className="password">
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" />
+          <input type="password" name="password" required />
+        </div>
+        <div className="rePassword">
+          <label htmlFor="rePassword">Retype Password</label>
+          <input type="password" name="rePassword" required />
         </div>
       </div>
       <div className="form-actions">
@@ -45,6 +61,8 @@ export async function action({ request, params }) {
   const data = await request.formData();
 
   const registerData = {
+    firstName: data.get("firstName"),
+    lastName: data.get("lastName"),
     email: data.get("email"),
     password: data.get("password"),
   };
@@ -65,7 +83,16 @@ export async function action({ request, params }) {
 
   const resData = await response.json();
   const token = resData.token;
+  console.log(resData.user.firstName);
+  const { firstName, lastName } = resData.user;
+  console.log(firstName, lastName);
 
   localStorage.setItem("token", token);
+
+  if (firstName && lastName) {
+    localStorage.setItem("firstName", firstName);
+    localStorage.setItem("lastName", lastName);
+  }
+
   return redirect("/");
 }

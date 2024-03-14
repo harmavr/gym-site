@@ -1,9 +1,21 @@
 import { Form, Link, useRouteLoaderData } from "react-router-dom";
 import classes from "./Navigation.module.css";
 import logo from "../assets/logo.jpg";
+import { useEffect, useState } from "react";
 
 export default function Navigation() {
   const token = useRouteLoaderData("root");
+
+  const [firstName, setFirstName] = useState(null);
+  const [lastName, setLastName] = useState(null);
+
+  useEffect(() => {
+    const storedFirstName = localStorage.getItem("firstName");
+    const storedLastName = localStorage.getItem("lastName");
+    setFirstName(storedFirstName);
+    setLastName(storedLastName);
+  }, []);
+
   return (
     <div className="index-page">
       <header className={classes.header}>
@@ -43,6 +55,7 @@ export default function Navigation() {
                 </Form>
               </li>
             )}
+            {firstName && lastName && <p>{`${firstName} ${lastName}`}</p>}
           </ul>
         </nav>
       </header>
