@@ -12,6 +12,8 @@ export default function Programm({ value }) {
   const token = useRouteLoaderData("root");
   const navigateTo = useNavigate();
   const dispatch = useDispatch();
+  const firstName = localStorage.getItem("firstName");
+  const lastName = localStorage.getItem("lastName");
 
   function handleCloseModal() {
     dispatch(closeProgramm());
@@ -20,6 +22,9 @@ export default function Programm({ value }) {
   async function handleBook() {
     if (!token) {
       navigateTo("/login");
+    } else {
+      alert(`successful book ${firstName}, ${lastName}`);
+      dispatch(closeProgramm());
     }
   }
 
