@@ -5,3 +5,7 @@ export const showProgramm = () => ({
 export const closeProgramm = () => ({
   type: "close",
 });
+
+export const bookProgramm = () => ({
+  type: "book",
+});

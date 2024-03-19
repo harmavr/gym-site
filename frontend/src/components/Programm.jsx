@@ -1,19 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "./Modal";
-import { closeProgramm } from "../redux/actions";
+import { bookProgramm, closeProgramm } from "../redux/actions";
 import { useRouteLoaderData } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Programm({ value }) {
   const coach = useSelector((state) => state.coach);
   const coachImg = useSelector((state) => state.img);
   const programm = useSelector((state) => state.programm);
   const close = useSelector((state) => state.isModalOpen);
+  const book = useSelector((state) => state.membersForToday);
   const token = useRouteLoaderData("root");
   const navigateTo = useNavigate();
   const dispatch = useDispatch();
   const firstName = localStorage.getItem("firstName");
   const lastName = localStorage.getItem("lastName");
+  const [teamLength, setTeamLength] = useState(0);
 
   function handleCloseModal() {
     dispatch(closeProgramm());
@@ -23,8 +26,28 @@ export default function Programm({ value }) {
     if (!token) {
       navigateTo("/login");
     } else {
-      alert(`successful book ${firstName}, ${lastName}`);
-      dispatch(closeProgramm());
+      if (teamLength < 10) {
+        const isAlreadyBooked = book.some(
+          (member) => member.firstName === firstName
+        );
+        if (!isAlreadyBooked) {
+          console.log(book.firstName);
+          alert(`successful book ${firstName}, ${lastName}`);
+          const payload = { firstName, lastName };
+          dispatch({
+            type: "book",
+            payload: payload,
+          });
+          console.log(book);
+
+          dispatch(closeProgramm());
+          setTeamLength((prevTeamLength) => prevTeamLength + 1);
+        } else {
+          alert("you have already booked!");
+        }
+      } else {
+        alert("max length of team reahed!");
+      }
     }
   }
 
@@ -40,6 +63,7 @@ export default function Programm({ value }) {
       </h3>
       <button onClick={handleCloseModal}>Close</button>
       <button onClick={handleBook}>Book</button>
+      <p>({teamLength}/10)</p>
     </Modal>
   );
 }

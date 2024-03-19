@@ -6,6 +6,7 @@ const initialState = {
   img: CoachImg,
   programm: "Legs",
   isModalOpen: false,
+  membersForToday: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,6 +20,22 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       isModalOpen: false,
+    };
+  }
+  if (action.type === "book") {
+    const { firstName, lastName } = action.payload;
+
+    const updatedBookings = [
+      ...state.membersForToday,
+      {
+        firstName: firstName,
+        lastName: lastName,
+      },
+    ];
+    return {
+      ...state,
+      isModalOpen: false,
+      membersForToday: updatedBookings,
     };
   } else return state;
 };
