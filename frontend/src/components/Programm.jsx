@@ -38,7 +38,6 @@ export default function Programm({ value }) {
             type: "book",
             payload: payload,
           });
-          console.log(book);
 
           dispatch(closeProgramm());
           setTeamLength((prevTeamLength) => prevTeamLength + 1);
@@ -63,7 +62,7 @@ export default function Programm({ value }) {
       </h3>
       <button onClick={handleCloseModal}>Close</button>
       <button onClick={handleBook}>Book</button>
-      <p>({teamLength}/10)</p>
+      <p>({book.length ? book.length : 0}/10)</p>
     </Modal>
   );
 }
