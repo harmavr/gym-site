@@ -72,5 +72,5 @@ export async function action({ request, params }) {
   localStorage.setItem("firstName", firstName);
   localStorage.setItem("lastName", lastName);
 
-  return redirect("/");
+  return redirect("/schedule");
 }
