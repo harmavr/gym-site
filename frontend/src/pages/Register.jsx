@@ -9,48 +9,117 @@ import {
 export default function Register() {
   const data = useActionData();
   const navigation = useNavigation();
-  const isSumbitting = navigation.state === "submitting";
+  const isSubmitting = navigation.state === "submitting";
 
   return (
-    <Form method="post">
-      <h2>Register</h2>
+    <Form
+      method="post"
+      className="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md"
+    >
+      <h2 className="text-2xl font-bold mb-4">Register</h2>
       {data && data.errors && (
-        <ul>
-          {Object.values(data.errors).map((err) => (
-            <li key={err}>{err}</li>
+        <ul className="mb-4">
+          {Object.values(data.errors).map((err, index) => (
+            <li key={index} className="text-red-600">
+              {err}
+            </li>
           ))}
         </ul>
       )}
-      {data && data.message && <p>{data.message}</p>}
+      {data && data.message && <p className="mb-4">{data.message}</p>}
       <div className="container">
-        <div className="firstName">
-          <label htmlFor="firstName">First Name</label>
-          <input type="text" name="firstName" required />
+        <div className="mb-4">
+          <label
+            htmlFor="firstName"
+            className="block text-sm font-semibold text-gray-600"
+          >
+            First Name
+          </label>
+          <input
+            type="text"
+            name="firstName"
+            required
+            className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          />
         </div>
-        <div className="lastName">
-          <label htmlFor="lastName">Last Name</label>
-          <input type="text" name="lastName" required />
+        <div className="mb-4">
+          <label
+            htmlFor="lastName"
+            className="block text-sm font-semibold text-gray-600"
+          >
+            Last Name
+          </label>
+          <input
+            type="text"
+            name="lastName"
+            required
+            className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          />
         </div>
-        <div className="email">
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" required />
+        <div className="mb-4">
+          <label
+            htmlFor="email"
+            className="block text-sm font-semibold text-gray-600"
+          >
+            Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            required
+            className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          />
         </div>
-        <div className="mobilePhone">
-          <label htmlFor="mobilePhone">Mobile Phone</label>
-          <input type="number" name="mobilePhone" required />
+        <div className="mb-4">
+          <label
+            htmlFor="mobilePhone"
+            className="block text-sm font-semibold text-gray-600"
+          >
+            Mobile Phone
+          </label>
+          <input
+            type="number"
+            name="mobilePhone"
+            required
+            className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          />
         </div>
-        <div className="password">
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" required />
+        <div className="mb-4">
+          <label
+            htmlFor="password"
+            className="block text-sm font-semibold text-gray-600"
+          >
+            Password
+          </label>
+          <input
+            type="password"
+            name="password"
+            required
+            className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          />
         </div>
-        <div className="rePassword">
-          <label htmlFor="rePassword">Retype Password</label>
-          <input type="password" name="rePassword" required />
+        <div className="mb-4">
+          <label
+            htmlFor="rePassword"
+            className="block text-sm font-semibold text-gray-600"
+          >
+            Retype Password
+          </label>
+          <input
+            type="password"
+            name="rePassword"
+            required
+            className="w-full px-4 py-2 mt-1 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          />
         </div>
       </div>
       <div className="form-actions">
-        <button disabled={isSumbitting}>
-          {isSumbitting ? "Submitting" : "Register"}
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+        >
+          {isSubmitting ? "Submitting" : "Register"}
         </button>
       </div>
     </Form>

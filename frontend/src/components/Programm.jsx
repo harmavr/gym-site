@@ -1,8 +1,8 @@
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "./Modal";
-import { bookProgramm, closeProgramm } from "../redux/actions";
-import { useRouteLoaderData } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { closeProgramm } from "../redux/actions";
+import { useNavigate, useRouteLoaderData } from "react-router-dom";
 import { useState } from "react";
 
 export default function Programm({ value }) {
@@ -45,24 +45,36 @@ export default function Programm({ value }) {
           alert("you have already booked!");
         }
       } else {
-        alert("max length of team reahed!");
+        alert("max length of team reached!");
       }
     }
   }
 
   return (
     <Modal className="programm" open={value}>
-      <h2>
-        Today's Programm: <span>{programm}</span>
-      </h2>
-      <h3>{coach}</h3>
+      <div className="max-w-lg mx-auto p-6">
+        <h2 className="text-2xl font-bold mb-4">
+          Today's Programm: <span className="font-normal">{programm}</span>
+        </h2>
+        <h3 className="text-xl font-semibold mb-4">{coach}</h3>
 
-      <h3>
-        <img style={{ width: "500px" }} src={coachImg} alt="" />
-      </h3>
-      <button onClick={handleCloseModal}>Close</button>
-      <button onClick={handleBook}>Book</button>
-      <p>({book.length ? book.length : 0}/10)</p>
+        <div className="mb-4">
+          <img className="w-full" src={coachImg} alt="" />
+        </div>
+        <button
+          onClick={handleCloseModal}
+          className="mr-2 px-4 py-2 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
+        >
+          Close
+        </button>
+        <button
+          onClick={handleBook}
+          className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+        >
+          Book
+        </button>
+        <p className="mt-2 text-gray-600">{book.length ? book.length : 0}/10</p>
+      </div>
     </Modal>
   );
 }
