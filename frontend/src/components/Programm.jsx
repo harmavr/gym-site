@@ -51,7 +51,7 @@ export default function Programm({ value }) {
   }
 
   return (
-    <Modal className="programm" open={value}>
+    <Modal className="programm" open={value} onClose={handleCloseModal}>
       <div className="max-w-lg mx-auto p-6">
         <h2 className="text-2xl font-bold mb-4">
           Today's Programm: <span className="font-normal">{programm}</span>
