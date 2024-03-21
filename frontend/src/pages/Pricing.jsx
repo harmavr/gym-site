@@ -1,3 +1,5 @@
+import listImg from "../assets/dumbbell.jpg";
+
 export default function Pricing() {
   return (
     <>
@@ -19,32 +21,145 @@ export default function Pricing() {
             </thead>
             <tbody>
               <tr>
-                <td className="border border-gray-300 px-4 py-2">12</td>
-                <td className="border border-gray-300 px-4 py-2">20</td>
-                <td className="border border-gray-300 px-4 py-2">30</td>
+                <td className="border border-gray-300 px-4 py-2">
+                  <span className="text-4xl font-bold text-green-800">$12</span>
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  <span className="text-4xl font-bold text-green-800">$20</span>
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  <span className="text-4xl font-bold text-green-800">$30</span>
+                </td>
               </tr>
               <tr>
                 <td className="border border-gray-300 px-4 py-2">
-                  <ul>
-                    <li>Smart workout plan</li>
-                    <li>At home workouts</li>
+                  <ul className="list-disc list-inside">
+                    <li className="flex items-center">
+                      <img
+                        src={listImg}
+                        alt="Bullet Point"
+                        className="mr-2 w-4 h-4"
+                      />
+                      <span className="text-2xl italic font-semibold text-yellow-800">
+                        Smart workout plan
+                      </span>
+                    </li>
+                    <li className="flex items-center">
+                      <img
+                        src={listImg}
+                        alt="Bullet Point"
+                        className="mr-2 w-4 h-4"
+                      />
+                      <span className="text-2xl italic font-semibold text-yellow-800">
+                        At home workouts
+                      </span>{" "}
+                    </li>
                   </ul>
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
-                  <ul>
-                    <li>Pro gyms</li>
-                    <li>Smart workout plans</li>
-                    <li>At home workouts</li>
+                  <ul className="list-disc list-inside">
+                    <li className="flex items-center">
+                      <img
+                        src={listImg}
+                        alt="Bullet Point"
+                        className="mr-2 w-4 h-4"
+                      />
+                      <span className="text-2xl italic font-semibold text-yellow-800">
+                        Pro gyms
+                      </span>
+                    </li>
+                    <li className="flex items-center">
+                      <img
+                        src={listImg}
+                        alt="Bullet Point"
+                        className="mr-2 w-4 h-4"
+                      />
+                      <span className="text-2xl italic font-semibold text-yellow-800">
+                        Smart workout plans
+                      </span>
+                    </li>
+                    <li className="flex items-center">
+                      <img
+                        src={listImg}
+                        alt="Bullet Point"
+                        className="mr-2 w-4 h-4"
+                      />
+                      <span className="text-2xl italic font-semibold text-yellow-800">
+                        At home workouts
+                      </span>
+                    </li>
                   </ul>
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
-                  <ul>
-                    <li>ELITE gyms and classes</li>
-                    <li>Pro gyms</li>
-                    <li>Smart workout plans</li>
-                    <li>At home workouts</li>
-                    <li>Personal Trainings</li>
+                  <ul className="list-disc list-inside space-y-2">
+                    <li className="flex items-center">
+                      <img
+                        src={listImg}
+                        alt="Bullet Point"
+                        className="mr-2 w-4 h-4"
+                      />
+                      <span className="text-2xl italic font-semibold text-yellow-800">
+                        ELITE gyms and classes
+                      </span>
+                    </li>
+                    <li className="flex items-center">
+                      <img
+                        src={listImg}
+                        alt="Bullet Point"
+                        className="mr-2 w-4 h-4"
+                      />
+                      <span className="text-2xl italic font-semibold text-yellow-800">
+                        Pro gyms
+                      </span>
+                    </li>
+                    <li className="flex items-center">
+                      <img
+                        src={listImg}
+                        alt="Bullet Point"
+                        className="mr-2 w-4 h-4"
+                      />
+                      <span className="text-2xl italic font-semibold text-yellow-800">
+                        Smart workout plans
+                      </span>
+                    </li>
+                    <li className="flex items-center">
+                      <img
+                        src={listImg}
+                        alt="Bullet Point"
+                        className="mr-2 w-4 h-4"
+                      />
+                      <span className="text-2xl italic font-semibold text-yellow-800">
+                        At home workouts
+                      </span>
+                    </li>
+                    <li className="flex items-center">
+                      <img
+                        src={listImg}
+                        alt="Bullet Point"
+                        className="mr-2 w-4 h-4"
+                      />
+                      <span className="text-2xl italic font-semibold text-yellow-800">
+                        Personal Trainings
+                      </span>
+                    </li>
                   </ul>
+                </td>
+              </tr>
+              <tr>
+                <td className="border">
+                  <button className="mr-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
+                    Purchase
+                  </button>
+                </td>
+                <td className="border">
+                  <button className="mr-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
+                    Purchase
+                  </button>
+                </td>
+                <td className="border">
+                  <button className="mr-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
+                    Purchase
+                  </button>
                 </td>
               </tr>
             </tbody>
