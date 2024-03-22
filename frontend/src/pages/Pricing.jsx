@@ -1,17 +1,24 @@
 import { useDispatch } from "react-redux";
 import listImg from "../assets/dumbbell.jpg";
 import { addtOCart } from "../redux/cart/actions";
+import { useNavigate, useRouteLoaderData } from "react-router-dom";
 
 export default function Pricing() {
   const dispatch = useDispatch();
+  const token = useRouteLoaderData("root");
+  const navigateTo = useNavigate();
 
   const handlePurchase = (plan, price, details) => {
-    const payload = { plan, price, details };
+    if (!token) {
+      navigateTo("/login");
+    } else {
+      const payload = { plan, price, details };
 
-    dispatch({
-      type: "add",
-      payload: payload,
-    });
+      dispatch({
+        type: "add",
+        payload: payload,
+      });
+    }
   };
 
   return (
