@@ -1,7 +1,6 @@
-import { useState } from "react";
-import CoachImg from "../assets/coach.jpg";
+import CoachImg from "../../assets/coach.jpg";
 
-const initialState = {
+const initialProgrammState = {
   coach: "Coach Charis",
   img: CoachImg,
   programm: "Legs",
@@ -9,7 +8,7 @@ const initialState = {
   membersForToday: [],
 };
 
-const reducer = (state = initialState, action) => {
+const ProgrammReducer = (state = initialProgrammState, action) => {
   if (action.type === "show") {
     return {
       ...state,
@@ -40,4 +39,4 @@ const reducer = (state = initialState, action) => {
   } else return state;
 };
 
-export default reducer;
+export default ProgrammReducer;
