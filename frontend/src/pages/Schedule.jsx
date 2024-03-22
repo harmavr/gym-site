@@ -2,12 +2,12 @@ import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useDispatch, useSelector } from "react-redux";
-import { showProgramm } from "../redux/actions";
+import { showProgramm } from "../redux/programm/actions";
 import Programm from "../components/Programm";
 
 export default function Schedule() {
   const dispatch = useDispatch();
-  const isModalOpen = useSelector((state) => state.isModalOpen);
+  const isModalOpen = useSelector((state) => state.program.isModalOpen);
 
   const handeDisplayProgramm = () => {
     dispatch(showProgramm());

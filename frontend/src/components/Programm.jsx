@@ -1,16 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Modal from "./Modal";
-import { closeProgramm } from "../redux/actions";
+import ProgramModal from "./ProgramModal";
+import { closeProgramm } from "../redux/programm/actions";
 import { useNavigate, useRouteLoaderData } from "react-router-dom";
 import { useState } from "react";
 
 export default function Programm({ value }) {
-  const coach = useSelector((state) => state.coach);
-  const coachImg = useSelector((state) => state.img);
-  const programm = useSelector((state) => state.programm);
-  const close = useSelector((state) => state.isModalOpen);
-  const book = useSelector((state) => state.membersForToday);
+  const coach = useSelector((state) => state.program.coach);
+  const coachImg = useSelector((state) => state.program.img);
+  const programm = useSelector((state) => state.program.programm);
+  const book = useSelector((state) => state.program.membersForToday);
   const token = useRouteLoaderData("root");
   const navigateTo = useNavigate();
   const dispatch = useDispatch();
@@ -51,7 +50,7 @@ export default function Programm({ value }) {
   }
 
   return (
-    <Modal className="programm" open={value} onClose={handleCloseModal}>
+    <ProgramModal className="programm" open={value} onClose={handleCloseModal}>
       <div className="max-w-lg mx-auto p-6">
         <h2 className="text-2xl font-bold mb-4">
           Today's Programm: <span className="font-normal">{programm}</span>
@@ -75,6 +74,6 @@ export default function Programm({ value }) {
         </button>
         <p className="mt-2 text-gray-600">{book.length ? book.length : 0}/10</p>
       </div>
-    </Modal>
+    </ProgramModal>
   );
 }
