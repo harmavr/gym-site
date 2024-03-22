@@ -1,6 +1,10 @@
 import { Form, Link, useRouteLoaderData } from "react-router-dom";
 import logo from "../assets/logo.jpg";
 import { useEffect, useState } from "react";
+import cartImg from "../assets/cart.jpg";
+import Cart from "./Cart";
+import { useDispatch, useSelector } from "react-redux";
+import { closeCart, showCart } from "../redux/cart/actions";
 
 export default function Navigation() {
   const token = useRouteLoaderData("root");
@@ -8,12 +12,19 @@ export default function Navigation() {
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
 
+  const isModalOpen = useSelector((state) => state.cart.isModalOpen);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const storedFirstName = localStorage.getItem("firstName");
     const storedLastName = localStorage.getItem("lastName");
     setFirstName(storedFirstName);
     setLastName(storedLastName);
   }, []);
+
+  function handleShowCart() {
+    dispatch(showCart());
+  }
 
   return (
     <div className="index-page">
@@ -46,12 +57,18 @@ export default function Navigation() {
               </li>
             </ul>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center space-x-3">
             {token ? (
               <>
                 {firstName && lastName && (
                   <p className="text-white mr-4">{`${firstName} ${lastName}`}</p>
                 )}
+                <div className="cart ">
+                  <button onClick={handleShowCart}>
+                    <img src={cartImg} alt="" className="h-10" />
+                  </button>
+                  {<Cart value={isModalOpen} />}
+                </div>
                 <Form action="/logout" method="post">
                   <button className="text-white hover:text-gray-300">
                     Logout
