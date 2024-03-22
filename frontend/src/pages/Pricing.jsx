@@ -1,6 +1,19 @@
+import { useDispatch } from "react-redux";
 import listImg from "../assets/dumbbell.jpg";
+import { addtOCart } from "../redux/cart/actions";
 
 export default function Pricing() {
+  const dispatch = useDispatch();
+
+  const handlePurchase = (plan, price, details) => {
+    const payload = { plan, price, details };
+
+    dispatch({
+      type: "add",
+      payload: payload,
+    });
+  };
+
   return (
     <>
       <h1 className="text-3xl font-bold mb-4">Pricing</h1>
@@ -147,17 +160,44 @@ export default function Pricing() {
               </tr>
               <tr>
                 <td className="border">
-                  <button className="mr-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
+                  <button
+                    onClick={() =>
+                      handlePurchase(
+                        "Basic Plan",
+                        "$12",
+                        "Smart workout plan, At home workouts"
+                      )
+                    }
+                    className="mr-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
+                  >
                     Purchase
                   </button>
                 </td>
                 <td className="border">
-                  <button className="mr-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
+                  <button
+                    onClick={() =>
+                      handlePurchase(
+                        "Weekly Plan",
+                        "$20",
+                        "Pro gyms, Smart workout plans, At home workouts"
+                      )
+                    }
+                    className="mr-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
+                  >
                     Purchase
                   </button>
                 </td>
                 <td className="border">
-                  <button className="mr-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
+                  <button
+                    onClick={() =>
+                      handlePurchase(
+                        "Weekly Plan",
+                        "$20",
+                        "ELITE gyms and classes, Pro gyms, Smart workout plans, At home workouts,Personal Trainings "
+                      )
+                    }
+                    className="mr-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
+                  >
                     Purchase
                   </button>
                 </td>

@@ -5,3 +5,7 @@ export const showCart = () => ({
 export const closeCart = () => ({
   type: "close",
 });
+
+export const addtOCart = () => ({
+  type: "add",
+});
