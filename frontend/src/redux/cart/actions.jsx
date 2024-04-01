@@ -1,11 +1,11 @@
 export const showCart = () => ({
-  type: "show",
+  type: "showCart",
 });
 
 export const closeCart = () => ({
-  type: "close",
+  type: "closeCart",
 });
 
 export const addtOCart = () => ({
-  type: "add",
+  type: "addCart",
 });

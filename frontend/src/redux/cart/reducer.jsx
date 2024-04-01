@@ -6,19 +6,19 @@ const initialCartState = {
 };
 
 const CartReducer = (state = initialCartState, action) => {
-  if (action.type === "show") {
+  if (action.type === "showCart") {
     return {
       ...state,
       isModalOpen: true,
     };
   }
-  if (action.type === "close") {
+  if (action.type === "closeCart") {
     return {
       ...state,
       isModalOpen: false,
     };
   }
-  if (action.type === "add") {
+  if (action.type === "addCart") {
     const { plan, price, details } = action.payload;
 
     return {

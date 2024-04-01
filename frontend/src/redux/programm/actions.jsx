@@ -1,11 +1,11 @@
 export const showProgramm = () => ({
-  type: "show",
+  type: "showProg",
 });
 
 export const closeProgramm = () => ({
-  type: "close",
+  type: "closeProg",
 });
 
 export const bookProgramm = () => ({
-  type: "book",
+  type: "bookProg",
 });

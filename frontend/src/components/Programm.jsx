@@ -34,7 +34,7 @@ export default function Programm({ value }) {
           alert(`successful book ${firstName}, ${lastName}`);
           const payload = { firstName, lastName };
           dispatch({
-            type: "book",
+            type: "bookProg",
             payload: payload,
           });
 

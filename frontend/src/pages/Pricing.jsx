@@ -15,7 +15,7 @@ export default function Pricing() {
       const payload = { plan, price, details };
 
       dispatch({
-        type: "add",
+        type: "addCart",
         payload: payload,
       });
     }
