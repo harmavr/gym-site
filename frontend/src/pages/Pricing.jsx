@@ -18,6 +18,7 @@ export default function Pricing() {
         type: "addCart",
         payload: payload,
       });
+      alert(`you have purchaed the ${plan}`);
     }
   };
 
@@ -198,7 +199,7 @@ export default function Pricing() {
                   <button
                     onClick={() =>
                       handlePurchase(
-                        "Weekly Plan",
+                        "Monthly Plan",
                         "$20",
                         "ELITE gyms and classes, Pro gyms, Smart workout plans, At home workouts,Personal Trainings "
                       )
